@@ -1,18 +1,23 @@
 {
+  "scriptFile": "__init__.py",
   "bindings": [
     {
-      "name": "req",
+      "authLevel": "anonymous",
       "type": "httpTrigger",
       "direction": "in",
-      "authLevel": "anonymous",
-      "methods": ["get", "post"]
-      "route": "checkDB"
+      "name": "req",
+      "methods": [
+        "get",
+        "post",
+        "patch",
+        "delete"
+      ],
+      "route": "/{*route}"
     },
     {
-      "name": "$return",
       "type": "http",
-      "direction": "out"
+      "direction": "out",
+      "name": "$return"
     }
   ]
 }
-
