@@ -1,5 +1,5 @@
 {
-  "name": "Database",
+  "name": "WrapperFunction",
   "scriptFile": "__init__.py",
   "bindings": [
     {
