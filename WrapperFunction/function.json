@@ -2,22 +2,18 @@
   "scriptFile": "__init__.py",
   "bindings": [
     {
-      "authLevel": "anonymous",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post",
-        "patch",
-        "delete"
-      ],
-      "route": "/{*route}"
+      "name": "req",  // This name will be referenced in your Python function as the trigger object.
+      "type": "httpTrigger",  // HTTP trigger binding
+      "direction": "in",  // Incoming request
+      "authLevel": "anonymous",  // Choose appropriate auth level (anonymous, function, admin)
+      "methods": ["get", "post"],  // Allowed methods (GET and POST)
+      "route": "checkDB"  // Custom route; if you want this function to be accessed at /api/checkDB
     },
     {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
+      "name": "$return",  // This defines the output of the function
+      "type": "http",  // HTTP response
+      "direction": "out"  // Outgoing response
     }
   ]
 }
+
