@@ -6,6 +6,7 @@
       "direction": "in",
       "authLevel": "anonymous",
       "methods": ["get", "post"]
+      "route": "checkDB"
     },
     {
       "name": "$return",
