@@ -5,20 +5,28 @@ from WrapperFunction.db_check import check_database  # Import the function from 
 
 app = fastapi.FastAPI()
 
-@app.get("/checkDB")
-async def index():
-    # Invoke the check_database function
-    result = await check_database()
-    return {
-        "results": str(result),
-    }
-
-@app.get("/hello/{name}")
-async def get_name(name: str):
-    return {
-        "name": name,
-    }
+@app.get("/")
+def read_root():
+    return {"message": "Hello from FastAPI on Azure Functions!"}
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
-    wsgi_app = WSGIMiddleware(app)
-    return func.WsgiMiddleware(wsgi_app).handle(req)
+    # Use Uvicorn to run FastAPI app
+    if req.method == "GET":
+        return func.HttpResponse(
+            content=JSONResponse(app(req)).body,
+            status_code=200,
+            mimetype="application/json"
+        )
+    else:
+        return func.HttpResponse(
+            "Method Not Allowed", status_code=405
+        )
+
+#@app.get("/checkDB")
+#async def index():
+#    # Invoke the check_database function
+#    result = await check_database()
+#    return {
+#        "results": str(result),
+#    }
+
