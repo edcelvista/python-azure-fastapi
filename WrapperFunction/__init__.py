@@ -22,11 +22,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             "Method Not Allowed", status_code=405
         )
 
-#@app.get("/checkDB")
-#async def index():
-#    # Invoke the check_database function
-#    result = await check_database()
-#    return {
-#        "results": str(result),
-#    }
+@app.get("/checkDB")
+async def databasecheck():
+    # Invoke the check_database function
+    result = await check_database()
+    return {
+        "results": str(result),
+    }
 
